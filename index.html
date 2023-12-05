@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let auditoriums=[["BiologyClass", 10, "BioFac"], ["JournalistClass", 15, "JourFac"], ["MathematicClass", 20, "FizMat"], ["AlchimicClass", 25, "AlchimMat"]];
+        document.write("Auditoriums: ");
+        document.write("<br />")
+        for(let i=0;i<auditoriums.length;i++){
+            
+                document.write(auditoriums[i]+" ");
+                document.write("<br />")
+        }
+       
+        document.write("<br />");
+      let a=prompt("Введите факультет: ");
+      for (let i=0;i<auditoriums.length;i++){
+        if(auditoriums[i][2]==a){
+            document.write("Вашему факультету соответсвует аудитория: "+auditoriums[i][0]+" ");
+        }
+      }
+      document.write("<br />");
+      //Соответствие групп аудиториям - должен совпадать факультет и подходить кол-во свободных мест для студентов
+      document.write("<br />");
+      let groups=[["KNP-221", 13, "JourFac"], ["KNP-222", 15, "BioFac"], ["KNP-223", 10, "JourFac"], ["KNP-222", 15, "FizMat"]];
+      for (let i=0;i<groups.length;i++){
+        for (let j=0;j<auditoriums.length;j++){
+            if((groups[i][1]<=auditoriums[j][1])&&(groups[i][2]==auditoriums[j][2])){
+                document.write("Для группы "+groups[i][0]+" соответствует аудитория "+auditoriums[j][0]);
+                document.write("<br />");
+            }
+        }
+      }
+      document.write("<br />");
+      let temp;
+      function SortBySeats(array){
+        for(let i=0;i<array.length-1;i++){
+            if (array[i][1]>array[i+1][1]){
+                temp=array[i+1];
+                array[i+1]=array[i];
+                array[i]=temp;
+            }
+        }
+      }
+      SortBySeats(auditoriums);
+      for(let i=0;i<auditoriums.length;i++){
+            
+            document.write(auditoriums[i]+" ");
+            document.write("<br />");
+    }
+    document.write("<br />");
+    function SortByName(array){
+        array.sort();
+    }
+    SortByName(auditoriums);
+    for(let i=0;i<auditoriums.length;i++){
+            
+            document.write(auditoriums[i]+" ");
+            document.write("<br />")
+    }
+    </script>
+</body>
+</html>
